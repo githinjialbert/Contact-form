@@ -1,5 +1,8 @@
 <?php
 
+error_reporting(E_ALL);
+ini_set('display_errors', 1);
+
 require_once '../sessions.php';
 require_once 'contact_model.inc.php';
 
@@ -44,7 +47,7 @@ class ContactContr {
 
     if (!preg_match('/^\+?[0-9\s\-\(\)]+$/', $phone) || strlen($stripped_phone) < 10 || strlen($stripped_phone) > 15) {
         throw new Exception("Invalid phone number format. It should contain 10-15 digits and can include a leading +, spaces, dashes, and parentheses.");
-
+    }
     if (strlen($messages) < 20) {
         throw new Exception("Message should exceed 20 characters");
     }
@@ -53,12 +56,11 @@ class ContactContr {
     }
 
     try {
-        $this->conn->insertYourInfo($fname, $lname, $email, $phone, $messages); 
+        $this->messager->insertYourInfo($fname, $lname, $email, $phone, $messages); 
         echo "Form submitted successfully.";
     } catch (PDOException $e) {
         echo "An error occurred. Could not submit form." . $e->getMessage();
     }
 
    }
-}
 }

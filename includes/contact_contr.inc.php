@@ -3,8 +3,8 @@
 error_reporting(E_ALL);
 ini_set('display_errors', 1);
 
-require_once '../sessions.php';
 require_once 'contact_model.inc.php';
+require_once '../sessions.php';
 
 
 class ContactContr {
@@ -64,3 +64,6 @@ class ContactContr {
 
    }
 }
+
+$contactContr = new ContactContr();
+$contactContr->contactForm();

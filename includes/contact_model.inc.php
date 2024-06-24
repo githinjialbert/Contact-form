@@ -2,7 +2,7 @@
 
 class ContactModel {
     private $dbserver = "localhost";
-    private $dbname = "contact_form";
+    private $dbname = "contacts_form";
     private $dbusername = "root";
     private $password = "";
     private $conn;
@@ -19,7 +19,7 @@ class ContactModel {
 
     public function insertYourInfo($fname, $lname, $email, $phone, $messages) {
         try {
-            $stmt = $this->conn->prepare("INSERT INTO messenger(fname, lname, email, phone, messages) VALUES(:fname, :lname, :email, :phone, :messages);");
+            $stmt = $this->conn->prepare("INSERT INTO messagebana(fname, lname, email, phone, messages) VALUES(:fname, :lname, :email, :phone, :messages);");
             $stmt->bindParam(":fname", $fname);
             $stmt->bindParam(":lname", $lname);
             $stmt->bindParam(":email", $email);
@@ -28,7 +28,7 @@ class ContactModel {
 
             return $stmt->execute();
 
-        } catch (PDOException $e) {
+        } catch(PDOException $e) {
             die("Failed to submit your results: " . $e->getMessage());
         }
     }

@@ -16,7 +16,7 @@ session_set_cookie_params([
 
 session_start();
 
-if (isset($_SESSION["messengers_id"])) {
+if (isset($_SESSION["messagebana_id"])) {
     if (!isset($_SESSION["last_regenaration"])) {
         regenerate_session_id();
     } else {
